@@ -296,9 +296,11 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
             </svg>
           </button>
           {/* Logo */}
-          <NavLink end to="/dashboard" className="block ">
+          <NavLink end to="/dashboard" className="flex flex-col items-center">
             <img src={BitWatchLogo} alt="site-logo" width="70" className='mt-14'/>
+            <h1 className='bg-gradient-to-r from-customPink to-customBlue text-transparent bg-clip-text text-lg mb-6 text-left font-extrabold'>BitWatch</h1>
           </NavLink>
+        
         </div>
         {/* Links */}
         <div className="space-y-8">

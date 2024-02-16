@@ -85,7 +85,7 @@ const AddScreen = ({ closeModal, fetchDataFromApi,accessToken}) => {
           </button>
         </div>
         <div className="p-4 modal-content">
-          <h2 className="text-xl font-bold bg-gradient-to-r from-customPink to-customBlue text-transparent bg-clip-text mb-4">Add Start Screen</h2>
+          <h2 className="text-2xl font-bold bg-gradient-to-r from-customPink to-customBlue text-transparent bg-clip-text mb-4">Add Splash Screen</h2>
           <form onSubmit={handleSubmit}>
             <div className="mb-1">
               <label className="block text-white text-sm font-bold mb-1" htmlFor="name">
