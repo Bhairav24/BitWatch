@@ -313,7 +313,9 @@ export default function SignUp() {
             alt="Logo"
             className="w-30 h-14 mr-2"
           />
+          
         </div>
+        <h1 className='bg-gradient-to-r from-customPink to-customBlue text-transparent bg-clip-text text-4xl mb-6 text-center font-extrabold'>Sign Up</h1>
         <form onSubmit={handleSubmit}>
           {/* <div className="flex items-center mb-4">
             <span className="mr-4">Sign in as</span>
@@ -346,7 +348,7 @@ export default function SignUp() {
               />
             </label>
           )} */}
-          <label>Name</label>
+          <label className='text-white'>Name</label>
           <input
             type="text"
             className="border p-2 w-full mb-4 bg-black text-white rounded"
@@ -354,7 +356,7 @@ export default function SignUp() {
             value={credentials.name}
             onChange={onChange}
           />
-          <label>Email address</label>
+          <label className='text-white'>Email address</label>
           <input
             type="email"
             className="border p-2 w-full mb-4 bg-black text-white rounded"
@@ -362,7 +364,7 @@ export default function SignUp() {
             value={credentials.email}
             onChange={onChange}
           />
-          <label>Phone</label>
+          <label className='text-white'>Phone</label>
           <input
             type="text"
             className="border p-2 w-full mb-4 bg-black text-white rounded"
@@ -370,7 +372,7 @@ export default function SignUp() {
             value={credentials.phone_number}
             onChange={onChange}
           />
-          <label>Age</label>
+          <label className='text-white'>Age</label>
           <input
             type="number"
             className="border p-2 w-full mb-4 bg-black text-white rounded"
@@ -378,7 +380,7 @@ export default function SignUp() {
             value={credentials.age}
             onChange={onChange}
           />
-          <label>Gender</label>
+          <label className='text-white'>Gender</label>
           <select
             onChange={onChange}
             className="border p-2 w-full mb-4 bg-black text-white rounded"
@@ -395,7 +397,7 @@ export default function SignUp() {
 
 
           
-            <label className="mb-5">Upload Image</label>
+            <label className="mb-5 text-white ">Upload Image</label>
             <input
               type="file"
               name="images"
@@ -416,7 +418,7 @@ export default function SignUp() {
 </label> */}
 
 
-          <label>City</label>
+          <label className='text-white'>City</label>
           <input
             type="text"
             className="border p-2 w-full mb-4 bg-black text-white rounded"
@@ -424,7 +426,7 @@ export default function SignUp() {
             value={credentials.city}
             onChange={onChange}
           />
-          <label>Password</label>
+          <label className='text-white'>Password</label>
           <input
             type="password"
             className="border p-2 w-full mb-4 bg-black text-white rounded"
@@ -432,14 +434,12 @@ export default function SignUp() {
             value={credentials.password}
             onChange={onChange}
           />
-          <div className="d-grid ">
-            <button type="submit" className="btn success btn-primary">
-              Sign Up
-            </button>
+                 <div className="d-grid ">
+         <button type="submit" className='bg-customBlue text-white p-2 rounded w-24 mt-2 '>Submit
+           </button>
            
-          </div>
-          <p className="forgot-password text-right">
-            Already registered <Link to="/"> Log in?</Link>
+       </div>
+          <p className="forgot-password text-center mt-6">Already have an account? <Link to="/" className='text-customBlue'> Log in</Link>
           </p>
         </form>
       </div>
