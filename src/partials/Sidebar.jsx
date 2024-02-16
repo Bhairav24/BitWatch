@@ -296,7 +296,7 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
             </svg>
           </button>
           {/* Logo */}
-          <NavLink end to="/" className="block">
+          <NavLink end to="/dashboard" className="block">
             <img src={BitWatchLogo} alt="site-logo" width="100" />
           </NavLink>
         </div>

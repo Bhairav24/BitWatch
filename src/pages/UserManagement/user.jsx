@@ -18,13 +18,13 @@ const User = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [selectedUserForEdit, setSelectedUserForEdit] = useState(null);
-  const accessToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1N2M2NGRjMGU3MWYxYzVmNGUwM2RiMSIsImVtYWlsIjoid2FzZWVtQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTcwNjM5MzA2Nn0.qW547zMKOn3a2Tv6ikp0tdGcNCRTrF7SMnx5mGbNFPg"; // Replace with your actual access token
-
+ // const accessToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1N2M2NGRjMGU3MWYxYzVmNGUwM2RiMSIsImVtYWlsIjoid2FzZWVtQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTcwNjM5MzA2Nn0.qW547zMKOn3a2Tv6ikp0tdGcNCRTrF7SMnx5mGbNFPg"; // Replace with your actual access token
+const accessToken=localStorage.getItem('authToken')
   const fetchDataFromApi = async () => {
     try {
       
-      const result = await axios.get("http://ec2-13-233-113-80.ap-south-1.compute.amazonaws.com:5000/admin/getAllusers");
-      setData(result.data);
+      const result = await axios.get("http://ec2-43-204-233-148.ap-south-1.compute.amazonaws.com:5000/user/getAllUsers");
+      setData(result.data.users);
     } catch (error) {
       setError(error);
     } finally {
@@ -104,7 +104,7 @@ const User = () => {
             <div className="sm:flex sm:justify-between sm:items-center mb-8">
               <div className="grid grid-flow-col sm:auto-cols-max justify-start sm:justify-end gap-2">
                 
-                <button
+                {/* <button
                   className="btn bg-indigo-500 hover:bg-indigo-600 text-white"
                   onClick={() => setIsModalOpen(true)}
                 >
@@ -112,7 +112,7 @@ const User = () => {
                     <path d="M15 7H9V1c0-.6-.4-1-1-1S7 .4 7 1v6H1c-.6 0-1 .4-1 1s.4 1 1 1h6v6c0 .6.4 1 1 1s1-.4 1-1V9h6c.6 0 1-.4 1-1s-.4-1-1-1z" />
                   </svg>
                   <span className="hidden xs:block ml-2">Add User</span>
-                </button>
+                </button> */}
               </div>
             </div>
 
@@ -126,19 +126,19 @@ const User = () => {
                     <thead className="text-xs uppercase text-slate-400 dark:text-slate-500 bg-slate-50 dark:bg-slate-700 dark:bg-opacity-50 rounded-sm">
                       <tr>
                         <th className="p-2">
-                          <div className="font-semibold text-left">First_name</div>
-                        </th>
-                        <th className="p-2">
-                          <div className="font-semibold text-left">Last_name</div>
+                          <div className="font-semibold text-left">Name</div>
                         </th>
                         <th className="p-2">
                           <div className="font-semibold text-center">Email</div>
                         </th>
                         <th className="p-2">
-                          <div className="font-semibold text-center">Phone Number</div>
+                          <div className="font-semibold text-center">Phone number</div>
                         </th>
                         <th className="p-2">
-                          <div className="font-semibold text-center">DOB</div>
+                          <div className="font-semibold text-center">Bio</div>
+                        </th>
+                        <th className="p-2">
+                          <div className="font-semibold text-center">Link</div>
                         </th>
                         <th className="p-2">
                           <div className="font-semibold text-center">Actions</div>
@@ -150,24 +150,24 @@ const User = () => {
                         <tr key={index}>
                           <td className="p-2">
                             <div className="flex items-center">
-                              <div className="text-slate-800 dark:text-slate-100">{user.First_name}</div>
+                              <div className="text-slate-800 dark:text-slate-100">{user.name}</div>
                             </div>
                           </td>
                           <td className="p-2">
-                            <div className="text-center">{user.Last_name}</div>
-                          </td>
-                          <td className="p-2">
-                            <div className="text-center">{user.Email}</div>
+                            <div className="text-center">{user.email}</div>
                           </td>
                           <td className="p-2">
                             <div className="text-center">{user.phone_number}</div>
                           </td>
                           <td className="p-2">
-                            <div className="text-center">{user.DOB}</div>
+                            <div className="text-center">{user.bio}</div>
+                          </td>
+                          <td className="p-2">
+                            <div className="text-center">{user.link}</div>
                           </td>
                           <td className="p-2" align="center">
                             <EditMenu align="right" className="relative inline-flex">
-                              <li>
+                              {/* <li>
                                 <Link
                                   onClick={() => handleBlock(user._id, user.block)}
                                   className={`font-medium text-sm ${user.block ? 'text-green-500' : 'text-red-500'} hover:text-rose-600 flex py-1 px-3`}
@@ -185,7 +185,7 @@ const User = () => {
                                 <Link onClick={() => handleDelete(user._id)} className="font-medium text-sm text-rose-500 hover:text-rose-600 flex py-1 px-3" to="#0">
                                   Delete
                                 </Link>
-                              </li>
+                              </li> */}
                             </EditMenu>
                           </td>
                         </tr>
