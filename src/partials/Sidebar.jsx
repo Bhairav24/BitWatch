@@ -287,7 +287,7 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
       {/* Sidebar */}
       <div id="sidebar" ref={sidebar} className={`flex flex-col absolute z-40 left-0 top-0 lg:static lg:left-auto lg:top-auto lg:translate-x-0 h-screen overflow-y-scroll lg:overflow-y-auto no-scrollbar w-64 lg:w-20 lg:sidebar-expanded:!w-64 2xl:!w-64 bg-slate-00 p-4 transition-all duration-200 ease-in-out ${sidebarOpen ? 'translate-x-0' : '-translate-x-64'}`}>
         {/* Sidebar header */}
-        <div className="flex justify-between mb-10 pr-3 sm:px-2">
+        <div className="flex justify-center mb-10 pr-3 sm:px-2">
           {/* Close button */}
           <button ref={trigger} className="lg:hidden text-slate-500 hover:text-slate-400" onClick={() => setSidebarOpen(!sidebarOpen)} aria-controls="sidebar" aria-expanded={sidebarOpen}>
             <span className="sr-only">Close sidebar</span>
@@ -296,18 +296,18 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
             </svg>
           </button>
           {/* Logo */}
-          <NavLink end to="/dashboard" className="block">
-            <img src={BitWatchLogo} alt="site-logo" width="100" />
+          <NavLink end to="/dashboard" className="block ">
+            <img src={BitWatchLogo} alt="site-logo" width="70" className='mt-14'/>
           </NavLink>
         </div>
         {/* Links */}
         <div className="space-y-8">
           {/* Pages group */}
           <div>
-            <h3 className="text-xs uppercase text-slate-500 font-semibold pl-3">
+            {/* <h3 className="text-xs uppercase text-slate-500 font-semibold pl-3">
               <span className="hidden lg:block lg:sidebar-expanded:hidden 2xl:hidden text-center w-6" aria-hidden="true">•••</span>
               <span className="lg:hidden lg:sidebar-expanded:block 2xl:block">Pages</span>
-            </h3>
+            </h3> */}
             <ul className="mt-3">
               {/* Dashboard */}
               <li className={`px-3 py-2 rounded-sm mb-0.5 last:mb-0 ${pathname.includes('inbox') && 'bg-slate-900'}`}>
@@ -342,13 +342,13 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
                     <div className="lg:hidden lg:sidebar-expanded:block 2xl:block">
                       <ul className={`pl-9 mt-1 ${!open && 'hidden'}`}>
                         <li className="mb-1 last:mb-0">
-                          <NavLink end to="/user" className={({ isActive }) => 'block transition duration-150 truncate ' + (isActive ? 'text-indigo-500' : 'text-slate-400 hover:text-slate-900')}>
+                          <NavLink end to="/user" className={({ isActive }) => 'block transition duration-150 truncate ' + (isActive ? 'text-zinc-600' : 'text-white hover:text-customPink')}>
                             <span className="text-sm font-medium lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">All Users</span>
                           </NavLink>
                         </li>
 
                         <li className="mb-1 last:mb-0">
-                          <NavLink end to="/startscreen" className={({ isActive }) => 'block transition duration-150 truncate ' + (isActive ? 'text-indigo-500' : 'text-slate-400 hover:text-slate-900')}>
+                          <NavLink end to="/startscreen" className={({ isActive }) => 'block transition duration-150 truncate ' + (isActive ? 'text-zinc-600' : 'text-white hover:text-customPink')}>
                             <span className="text-sm font-medium lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">Start Screen</span>
                           </NavLink>
                         </li>

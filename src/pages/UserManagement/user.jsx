@@ -118,7 +118,7 @@ const accessToken=localStorage.getItem('authToken')
 
             <div className="col-span-full xl:col-span-8 bg-white dark:bg-slate-800 shadow-lg rounded-sm border border-slate-200 dark:border-slate-700 overflow-hidden">
               <header className="px-5 py-4 border-b border-slate-100 dark:border-slate-700">
-                <h2 className="font-semibold text-slate-800 dark:text-slate-100">All Users</h2>
+                <h2 className=" text-slate-800 text-3xl font-bold bg-gradient-to-r from-customPink to-customBlue text-transparent bg-clip-text">All Users</h2>
               </header>
               <div className="p-3">
                 <div className="overflow-x-auto">
@@ -126,22 +126,22 @@ const accessToken=localStorage.getItem('authToken')
                     <thead className="text-xs uppercase text-slate-400 dark:text-slate-500 bg-slate-50 dark:bg-slate-700 dark:bg-opacity-50 rounded-sm">
                       <tr>
                         <th className="p-2">
-                          <div className="font-semibold text-left">Name</div>
+                          <div className="font-semibold text-left text-white">Name</div>
                         </th>
                         <th className="p-2">
-                          <div className="font-semibold text-center">Email</div>
+                          <div className="font-semibold text-center text-white">Email</div>
                         </th>
                         <th className="p-2">
-                          <div className="font-semibold text-center">Phone number</div>
+                          <div className="font-semibold text-center text-white">Phone number</div>
                         </th>
                         <th className="p-2">
-                          <div className="font-semibold text-center">Bio</div>
+                          <div className="font-semibold text-center text-white">Bio</div>
                         </th>
                         <th className="p-2">
-                          <div className="font-semibold text-center">Link</div>
+                          <div className="font-semibold text-center text-white">Link</div>
                         </th>
                         <th className="p-2">
-                          <div className="font-semibold text-center">Actions</div>
+                          <div className="font-semibold text-center text-white">Actions</div>
                         </th>
                       </tr>
                     </thead>

@@ -3,16 +3,16 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 
-const AddScreen = ({ closeModal, fetchDataFromApi }) => {
+const AddScreen = ({ closeModal, fetchDataFromApi,accessToken}) => {
 
 
-  const accessToken=localStorage.getItem('authToken')
     const [ImagePreview,SetImagePreview]=useState(null)
   const [formData, setFormData] = useState({
-    images: null,
-    heading: '',
-    description: '',
-    name:''
+    name:'',
+    images:null,
+    heading:'',
+    description:''
+    
    
    
   });
@@ -41,24 +41,31 @@ const AddScreen = ({ closeModal, fetchDataFromApi }) => {
     console.log(formData); // Add this line to log the form data
 
     try {
-      const result = await axios.post(
-        'http://ec2-43-204-233-148.ap-south-1.compute.amazonaws.com:5000/admin/uploadSliderImage',
-        formData,
+
+      const formDataToSend = new FormData();
+      formDataToSend.append('name', formData.name);
+      formDataToSend.append('images', formData.images);
+      formDataToSend.append('heading', formData.heading);
+      formDataToSend.append('description', formData.description);
+      const result = await axios.post('http://ec2-43-204-233-148.ap-south-1.compute.amazonaws.com:5000/admin/uploadSliderImage',
+      formDataToSend,
         {
           headers: {
-            'Content-Type': 'application/json',
+            'Content-Type':'multipart/form-data',
             Authorization: `Bearer ${accessToken}`,
           },
         }
       );
-      console.log(result);
+      console.log(result.data);
+
       fetchDataFromApi();
       closeModal();
-      toast.success('Information added successfully!')
+      toast.success(result.data.message)
     } catch (error) {
       console.log(error);
       toast.error('Something went wrong')
     }
+  
   };
 
   return (
@@ -81,7 +88,7 @@ const AddScreen = ({ closeModal, fetchDataFromApi }) => {
           <h2 className="text-xl font-bold bg-gradient-to-r from-customPink to-customBlue text-transparent bg-clip-text mb-4">Add Start Screen</h2>
           <form onSubmit={handleSubmit}>
             <div className="mb-1">
-              <label className="block text-gray-700 text-sm font-bold mb-1" htmlFor="name">
+              <label className="block text-white text-sm font-bold mb-1" htmlFor="name">
                 Image
               </label>
 
@@ -94,51 +101,51 @@ const AddScreen = ({ closeModal, fetchDataFromApi }) => {
                 type="file"
                
                 name="images"
-              
+              className='mb-2'
                 onChange={handleImageChange}
                
                 required
               />
             </div>
             <div className="mb-1">
-              <label className="block text-gray-700 text-sm font-bold " htmlFor="name">
+              <label className="block text-white text-sm font-bold " >
                 Name
               </label>
               <input
                 type="text"
-                id="name"
+             
                 name="name"
                 value={formData.name}
                 onChange={handleChange}
-                className="border rounded-md w-full py-2 px-3 mb-2"
+                className="border dark:bg-slate-800 rounded-md w-full py-2 px-3 mb-2"
                 required
               />
             </div>
             <div className="mb-1">
-              <label className="block text-gray-700 text-sm font-bold " htmlFor="heading">
+              <label className="block text-white text-sm font-bold " >
                Heading
               </label>
               <input
                 type="text"
-                id="heading"
+             
                 name="heading"
                 value={formData.heading}
                 onChange={handleChange}
-                className="border rounded-md w-full py-2 px-3 mb-2 "
+                className="border dark:bg-slate-800 rounded-md w-full py-2 px-3 mb-2 "
                 required
               />
             </div>
             <div className="mb-1">
-              <label className="block text-gray-700 text-sm font-bold " htmlFor="description">
+              <label className="block dark:bg-slate-800 text-white text-sm font-bold ">
               Description
               </label>
               <input
                 type="text"
-                id="description"
+               
                 name="description"
                 value={formData.description}
                 onChange={handleChange}
-                className="border rounded-md w-full py-2 px-3 mb-6"
+                className="border dark:bg-slate-800 rounded-md w-full py-2 px-3 mb-6"
                 required
               />
             </div>

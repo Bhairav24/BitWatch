@@ -19,13 +19,13 @@ const StartScreen = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [selectedUserForEdit, setSelectedUserForEdit] = useState(null);
-  const accessToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1N2M2NGRjMGU3MWYxYzVmNGUwM2RiMSIsImVtYWlsIjoid2FzZWVtQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTcwNjM5MzA2Nn0.qW547zMKOn3a2Tv6ikp0tdGcNCRTrF7SMnx5mGbNFPg"; // Replace with your actual access token
-
+//const accessToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1Y2QwMjVhZDVmMDE2MWMyZTkxMjJkMiIsImVtYWlsIjoibEBnbWFpbC5jb20iLCJpYXQiOjE3MDc5OTc4OTh9.5Ia-kfWTJMlTRI-bwwAY4ImSUE2x1y3fmZfhENwLzWE"; // Replace with your actual access token
+const accessToken=localStorage.getItem('authToken');
   const fetchDataFromApi = async () => {
     try {
       
-      const result = await axios.get("http://ec2-13-233-113-80.ap-south-1.compute.amazonaws.com:5000/admin/getAllusers");
-      setData(result.data);
+      const result = await axios.get("http://ec2-43-204-233-148.ap-south-1.compute.amazonaws.com:5000/admin/getAllSliderImages");
+      setData(result.data.sliderImages);
     } catch (error) {
       setError(error);
     } finally {
@@ -45,55 +45,55 @@ const StartScreen = () => {
     return <div>Error: {error.message}</div>;
   }
 
-  const handleEdit = (userId) => {
-    const userToEdit = data.find((user) => user._id === userId);
-    setSelectedUserForEdit(userToEdit);
-    setIsEditModalOpen(true);
-  };
+  // const handleEdit = (userId) => {
+  //   const userToEdit = data.find((user) => user._id === userId);
+  //   setSelectedUserForEdit(userToEdit);
+  //   setIsEditModalOpen(true);
+  // };
 
-  const handleDelete = async (userId) => {
-    try {
-      const result = await axios.post(
-        "http://ec2-13-233-152-110.ap-south-1.compute.amazonaws.com:5000/admin/deleteUserByAdmin",
-        {
-          userID: userId,
-        },
-        {
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${accessToken}`,
-          },
-        }
-      );
-      console.log(result);
-      fetchDataFromApi();
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  // const handleDelete = async (userId) => {
+  //   try {
+  //     const result = await axios.post(
+  //       "http://ec2-13-233-152-110.ap-south-1.compute.amazonaws.com:5000/admin/deleteUserByAdmin",
+  //       {
+  //         userID: userId,
+  //       },
+  //       {
+  //         headers: {
+  //           "Content-Type": "application/json",
+  //           Authorization: `Bearer ${accessToken}`,
+  //         },
+  //       }
+  //     );
+  //     console.log(result);
+  //     fetchDataFromApi();
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
 
-  const handleBlock = async (userId, isBlocked) => {
-    try {
-      const result = await axios.post(
-        "http://ec2-13-233-152-110.ap-south-1.compute.amazonaws.com:5000/admin/block",
-        {
-          userType: "User",
-          _id: userId,
-          block: !isBlocked,
-        },
-        {
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${accessToken}`,
-          },
-        }
-      );
-      console.log(result);
-      fetchDataFromApi();
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  // const handleBlock = async (userId, isBlocked) => {
+  //   try {
+  //     const result = await axios.post(
+  //       "http://ec2-13-233-152-110.ap-south-1.compute.amazonaws.com:5000/admin/block",
+  //       {
+  //         userType: "User",
+  //         _id: userId,
+  //         block: !isBlocked,
+  //       },
+  //       {
+  //         headers: {
+  //           "Content-Type": "application/json",
+  //           Authorization: `Bearer ${accessToken}`,
+  //         },
+  //       }
+  //     );
+  //     console.log(result);
+  //     fetchDataFromApi();
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
 
   return (
     <div className="flex h-screen overflow-hidden">
@@ -119,7 +119,7 @@ const StartScreen = () => {
 
             <div className="col-span-full xl:col-span-8 bg-white dark:bg-slate-800 shadow-lg rounded-sm border border-slate-200 dark:border-slate-700 overflow-hidden">
               <header className="px-5 py-4 border-b border-slate-100 dark:border-slate-700">
-                <h2 className="font-semibold text-slate-800 dark:text-slate-100">Start Screen</h2>
+                <h2 className="text-slate-800 text-3xl font-bold bg-gradient-to-r from-customPink to-customBlue text-transparent bg-clip-text">Start Screen</h2>
               </header>
               <div className="p-3">
                 <div className="overflow-x-auto">
@@ -127,19 +127,19 @@ const StartScreen = () => {
                     <thead className="text-xs uppercase text-slate-400 dark:text-slate-500 bg-slate-50 dark:bg-slate-700 dark:bg-opacity-50 rounded-sm">
                       <tr>
                         <th className="p-2">
-                          <div className="font-semibold text-left">Image</div>
+                          <div className="font-semibold text-left text-white">Image</div>
                         </th>
                         <th className="p-2">
-                          <div className="font-semibold text-center">Name</div>
+                          <div className="font-semibold text-center text-white">Name</div>
                         </th>
                         <th className="p-2">
-                          <div className="font-semibold text-center">Heading</div>
+                          <div className="font-semibold text-center text-white">Heading</div>
                         </th>
                         <th className="p-2">
-                          <div className="font-semibold text-center">Description</div>
+                          <div className="font-semibold text-center text-white">Description</div>
                         </th>
                         <th className="p-2">
-                          <div className="font-semibold text-center">Actions</div>
+                          <div className="font-semibold text-center text-white">Actions</div>
                         </th>
                       
                       
@@ -150,23 +150,23 @@ const StartScreen = () => {
                         <tr key={index}>
                           <td className="p-2">
                             <div className="flex items-center">
-                              <img className="text-slate-800 dark:text-slate-100" src='{user.image}'></img>
+                              <img className="text-slate-800 dark:text-slate-100 w-12 h-12 rounded" src={user.image}></img>
                             </div>
                           </td>
                           <td className="p-2">
-                            <div className="text-center">{user.First_name}</div>
+                            <div className="text-center">{user.name}</div>
                           </td>
                           <td className="p-2">
-                            <div className="text-center">{user._id}</div>
+                            <div className="text-center">{user.heading}</div>
                           </td>
                           <td className="p-2">
-                            <div className="text-center">{user.__v}</div>
+                            <div className="text-center">{user.description}</div>
                           </td>
                           
                       
                           <td className="p-2" align="center">
                             <EditMenu align="right" className="relative inline-flex">
-                              <li>
+                              {/* <li>
                                 <Link
                                   onClick={() => handleBlock(user._id, user.block)}
                                   className={`font-medium text-sm ${user.block ? 'text-green-500' : 'text-red-500'} hover:text-rose-600 flex py-1 px-3`}
@@ -184,7 +184,7 @@ const StartScreen = () => {
                                 <Link onClick={() => handleDelete(user._id)} className="font-medium text-sm text-rose-500 hover:text-rose-600 flex py-1 px-3" to="#0">
                                   Delete
                                 </Link>
-                              </li>
+                              </li> */}
                             </EditMenu>
                           </td>
                         </tr>
@@ -206,7 +206,7 @@ const StartScreen = () => {
       )}
 
       {/* Edit User modal */}
-      {isEditModalOpen && selectedUserForEdit && (
+      {/* {isEditModalOpen && selectedUserForEdit && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
           <EditUserForm
             userData={selectedUserForEdit}
@@ -215,7 +215,7 @@ const StartScreen = () => {
             accessToken={accessToken}
           />
         </div>
-      )}
+      )} */}
     </div>
   );
 };
