@@ -372,6 +372,9 @@ export default function SignUp() {
             value={credentials.phone_number}
             onChange={onChange}
           />
+
+
+
           <label className='text-white'>Age</label>
           <input
             type="number"

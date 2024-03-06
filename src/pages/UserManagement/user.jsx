@@ -9,6 +9,8 @@ import Datepicker from '../../components/Datepicker';
 import EditMenu from '../../components/DropdownEditMenu';
 import AddUserForm from './AddUserForm';
 import EditUserForm from './EditUserForm';
+import BreadCrumb from '../../components/BreadCrumb';
+import Skeleton from '../../components/Skeleton';
 
 const User = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -37,7 +39,7 @@ const accessToken=localStorage.getItem('authToken')
   }, []);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <div><Skeleton/></div>;
   }
 
   if (error) {
@@ -101,7 +103,9 @@ const accessToken=localStorage.getItem('authToken')
         <Header sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
         <main>
           <div className="px-4 sm:px-6 lg:px-8 py-8 w-full max-w-9xl mx-auto">
+          
             <div className="sm:flex sm:justify-between sm:items-center mb-8">
+            <BreadCrumb parentPage="Contents" currentPage="All Users"/>
               <div className="grid grid-flow-col sm:auto-cols-max justify-start sm:justify-end gap-2">
                 
                 {/* <button
@@ -115,11 +119,12 @@ const accessToken=localStorage.getItem('authToken')
                 </button> */}
               </div>
             </div>
-
-            <div className="col-span-full xl:col-span-8 bg-white dark:bg-slate-800 shadow-lg rounded-sm border border-slate-200 dark:border-slate-700 overflow-hidden">
-              <header className="px-5 py-4 border-b border-slate-100 dark:border-slate-700">
+            <header className="border-b border-slate-100 dark:border-slate-700 mb-4">
                 <h2 className=" text-slate-800 text-3xl font-bold bg-gradient-to-r from-customPink to-customBlue text-transparent bg-clip-text">All Users</h2>
               </header>
+
+            <div className="col-span-full xl:col-span-8 bg-white dark:bg-slate-800 shadow-lg rounded-sm border border-slate-200 dark:border-slate-700 overflow-hidden">
+              
               <div className="p-3">
                 <div className="overflow-x-auto">
                   <table className="table-auto w-full dark:text-slate-300">

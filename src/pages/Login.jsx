@@ -79,13 +79,13 @@ const Login = () => {
             Log in
           
 </button>
-<Link to="/signup">
+{/* <Link to="/signup">
 <button  className=" bg-white text-customBlue p-2 rounded w-full mt-2">
 
             Create Account
         
 </button>
-</Link>  
+</Link>   */}
 
         </form>
       </div>

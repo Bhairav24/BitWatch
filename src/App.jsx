@@ -34,7 +34,7 @@ import Year from './pages/ContentManagement/Year';
 import Reports from './pages/ContentManagement/Reports';
 import Blog from './pages/ContentManagement/Blog';
 import Signup from './pages/Signup';
-import StartScreen from './pages/UserManagement/StartScreen';
+import SplashScreen from './pages/UserManagement/SplashScreen';
 
 function App() {
 
@@ -78,8 +78,8 @@ function App() {
         <Route exact path="/year" element={<Year />} />
         <Route exact path="/reports" element={<Reports />} />
         <Route exact path="/blog" element={<Blog />} />
-        <Route exact path='/signup' element={<Signup/>} />
-        <Route exact path='/startscreen' element={<StartScreen/>} />
+  {/* <Route exact path='/signup' element={<Signup/>} /> */}
+        <Route exact path='/splashScreen' element={<SplashScreen/>} />
 
       </Routes>
     </>
